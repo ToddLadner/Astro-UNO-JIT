@@ -1,0 +1,283 @@
+---
+import Welcome from '../components/Welcome.astro';
+import Layout from '../layouts/Layout.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+<style>
+	/* Reset */
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	section { 
+		width: 80%;
+		margin-inline: auto;
+		margin-block: 5rem;
+	}
+
+	/* Start */
+	.grid-events {
+		--cal-stroke: #D2D7E5;
+
+		background-image: 
+		linear-gradient(to bottom, var(--cal-stroke) 1px, transparent 1px),
+		linear-gradient(to right, var(--cal-stroke) 1px, transparent 1px);;
+  	background-size: 
+			100% calc(var(--cell-height) * 2),
+			calc(100% / 7) 100%;
+		background-repeat: repeat-y, repeat-x;
+		border-bottom: 1px solid var(--cal-stroke);
+	}
+
+	.grid-events li {
+		display: flex;
+		flex: 1;
+		padding-block-end: 0.125rem;
+		min-width: 0;
+		position: relative;
+	}
+
+	.event {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+		padding: .25rem .5rem;
+		width: calc(100% - 1rem);
+		border-radius: .25rem;
+		background-color: #c6dafc;
+		border: 1px solid white;
+		
+		+ .event { position: relative; width: 60%; right: .25rem; }
+  }
+
+	:is(.grid-events, .grid-times) {
+		--cell-height: 2rem;
+
+		height: 100%;
+		display: grid;
+		grid-template-rows:
+			[times] auto
+			[time-0100] var(--cell-height)
+			[time-0130] var(--cell-height)
+			[time-0200] var(--cell-height)
+			[time-0230] var(--cell-height)
+			[time-0300] var(--cell-height)
+			[time-0330] var(--cell-height)
+			[time-0400] var(--cell-height)
+			[time-0430] var(--cell-height)
+			[time-0500] var(--cell-height)
+			[time-0530] var(--cell-height)
+			[time-0600] var(--cell-height)
+			[time-0630] var(--cell-height)
+			[time-0700] var(--cell-height)
+			[time-0730] var(--cell-height)
+			[time-0800] var(--cell-height)
+			[time-0830] var(--cell-height)
+			[time-0900] var(--cell-height)
+			[time-0930] var(--cell-height)
+			[time-1000] var(--cell-height)
+			[time-1030] var(--cell-height)
+			[time-1100] var(--cell-height)
+			[time-1130] var(--cell-height)
+			[time-1200] var(--cell-height)
+			[time-1230] var(--cell-height)
+			[time-1300] var(--cell-height)
+			[time-1330] var(--cell-height)
+			[time-1400] var(--cell-height)
+			[time-1430] var(--cell-height)
+			[time-1500] var(--cell-height)
+			[time-1530] var(--cell-height)
+			[time-1600] var(--cell-height)
+			[time-1630] var(--cell-height)
+			[time-1700] var(--cell-height)
+			[time-1730] var(--cell-height)
+			[time-1800] var(--cell-height)
+			[time-1830] var(--cell-height)
+			[time-1900] var(--cell-height)
+			[time-1930] var(--cell-height)
+			[time-2000] var(--cell-height)
+			[time-2030] var(--cell-height)
+			[time-2100] var(--cell-height)
+			[time-2130] var(--cell-height)
+			[time-2200] var(--cell-height)
+			[time-2230] var(--cell-height)
+			[time-2300] var(--cell-height)
+			[time-2330] var(--cell-height);
+			/* [time-2400] var(--cell-height); */
+
+		grid-template-columns:
+			[days] auto
+			[monday-start] 1fr
+			[monday-end tuesday-start] 1fr
+			[tuesday-end wednesday-start] 1fr
+			[wednesday-end thursday-start] 1fr
+			[thursday-end friday-start] 1fr
+			[friday-end saturday-start] 1fr
+			[saturday-end sunday-start] 1fr
+			[sunday-end];
+	}
+	
+		.grid-days {
+			display: grid;
+			position: sticky;
+			top: 0;
+			z-index: 10;
+			background-color: white;
+			margin-bottom: .5rem;
+		
+			grid-template-columns:
+				[days] 4em
+				[monday-start] 1fr
+				[monday-end tuesday-start] 1fr
+				[tuesday-end wednesday-start] 1fr
+				[wednesday-end thursday-start] 1fr
+				[thursday-end friday-start] 1fr
+				[friday-end saturday-start] 1fr
+				[saturday-end sunday-start] 1fr
+				[sunday-end];
+		}
+
+		.day-of-week {
+			grid-row: times;
+			grid-row: 1;
+			display: grid;
+			gap: .25rem;
+			text-align: center;
+			padding: .75rem;
+		}
+
+
+		.time-slot {
+			grid-row: times;
+
+			span {
+				position: absolute;
+				transform: translateY(-50%);
+			}
+		}
+
+
+		
+
+	.grids-wrap {
+		display: grid;
+		grid-template-columns: 4em 1fr;
+		position: relative;
+	}
+
+</style>
+
+<Layout>
+	<section>
+		<div class="calendar">
+			<!-- DAYS ROW -->
+			<ul class="grid-days">
+				<li class="day-of-week" style="grid-column: monday-start;">
+					<span>Monday</span>
+					<span>09</span>
+				</li>
+				<li class="day-of-week" style="grid-column: tuesday-start;">
+					<span>Tuesday</span>
+					<span>10</span>
+			</li>
+				<li class="day-of-week" style="grid-column: wednesday-start;">
+					<span>Wednesday</span>
+					<span>11</span>
+			</li>
+				<li class="day-of-week" style="grid-column: thursday-start;">
+					<span>Thursday</span>
+					<span>12</span>
+			</li>
+				<li class="day-of-week" style="grid-column: friday-start;">
+					<span>Friday</span>
+					<span>13</span>
+			</li>
+				<li class="day-of-week" style="grid-column: saturday-start;">
+					<span>Saturday</span>
+					<span>14</span>
+			</li>
+				<li class="day-of-week" style="grid-column: sunday-start;">
+					<span>Sunday</span>
+					<span>15</span>
+			</li>
+			</ul>
+			<div class="grids-wrap">
+				<!-- TIMES COLUMN -->
+				<ul class="grid-times">
+					<li class="time-slot" style="grid-row: time-0100;"><span>1 AM</span></li>
+					<li class="time-slot" style="grid-row: time-0200;"><span>2 AM</span></li>
+					<li class="time-slot" style="grid-row: time-0300;"><span>3 AM</span></li>
+					<li class="time-slot" style="grid-row: time-0400;"><span>4 AM</span></li>
+					<li class="time-slot" style="grid-row: time-0500;"><span>5 AM</span></li>
+					<li class="time-slot" style="grid-row: time-0600;"><span>6 AM</span></li>
+					<li class="time-slot" style="grid-row: time-0700;"><span>7 AM</span></li>
+					<li class="time-slot" style="grid-row: time-0800;"><span>8 AM</span></li>
+					<li class="time-slot" style="grid-row: time-0900;"><span>9 AM</span></li>
+					<li class="time-slot" style="grid-row: time-1000;"><span>10 AM</span></li>
+					<li class="time-slot" style="grid-row: time-1100;"><span>11 AM</span></li>
+					<li class="time-slot" style="grid-row: time-1200;"><span>12 AM</span></li>
+					<li class="time-slot" style="grid-row: time-1300;"><span>1:00</span></li>
+					<li class="time-slot" style="grid-row: time-1400;"><span>2:00</span></li>
+					<li class="time-slot" style="grid-row: time-1500;"><span>3:00</span></li>
+					<li class="time-slot" style="grid-row: time-1600;"><span>4:00</span></li>
+					<li class="time-slot" style="grid-row: time-1700;"><span>5:00</span></li>
+					<li class="time-slot" style="grid-row: time-1800;"><span>6:00</span></li>
+					<li class="time-slot" style="grid-row: time-1900;"><span>7:00</span></li>
+					<li class="time-slot" style="grid-row: time-2000;"><span>8:00</span></li>
+					<li class="time-slot" style="grid-row: time-2100;"><span>9:00</span></li>
+					<li class="time-slot" style="grid-row: time-2200;"><span>10:00</span></li>
+					<li class="time-slot" style="grid-row: time-2300;"><span>11:00</span></li>
+					<li class="time-slot" style="grid-row: time-2400;"><span>12:00</span></li>
+				</ul>
+				<!-- EVENTS GRID -->
+				<ul class="grid-events">	
+					<li style="grid-column: monday-start; grid-row: time-0230 / time-0400;">
+						<span class="event">2:30 - 4:00 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+					</li>
+					<li style="grid-column: monday-start; grid-row: time-0530 / time-0900;">
+						<span class="event">5:30 - 9:00 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+					</li>
+					
+					<li style="grid-column: tuesday-start / wednesday-end; grid-row: time-0500 / time-0530;">
+						<span class="event">5:00 - 5:30 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+					</li>
+					<li style="grid-column: tuesday-start; grid-row: time-0800 / time-0830;">
+						<span class="event">8:00 - 8:30 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+					</li>
+
+					<li style="grid-column: wednesday-start; grid-row: time-0600 / time-0630;">
+						<span class="event">6:00 - 6:30 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+						<span class="event">6:00 - 6:30 Solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+					</li>
+					
+					<li style="grid-column: thursday-start; grid-row: time-0700 / time-0830;">
+						<span class="event">7:00 - 8:30 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+						<span class="event">7:00 - 8:30 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+					</li>
+					
+					<li style="grid-column: thursday-start; grid-row: time-0730 / time-0800;">
+						<span class="event">7:30 - 8:00 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+					</li>
+
+					<li style="grid-column: friday-start; grid-row: time-0700 / time-0830;">
+						<span class="event">7:00 - 8:30 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+					</li>
+					<li style="grid-column: friday-start; grid-row: time-0700 / time-0800; margin-top:1.75rem">
+						<span class="event">7:00 - 8:00 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+					</li>
+
+					<!-- <li style="grid-column: thursday-start; grid-row: time-0730 / time-0800;">
+						<span class="event">7:30 - 8:00 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+					</li> -->
+
+					<li style="grid-column: friday-start; grid-row: time-1700 / time-2400;">
+						<span class="event">8:00 - 8:30 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+</Layout>

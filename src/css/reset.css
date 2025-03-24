@@ -1,0 +1,161 @@
+/*  TOC
+─────────────────────────────────
+Box sizing
+Container Type
+HTML
+Body - Fallback font
+Body - Adaptive typography
+Typography
+Elements
+Faster taps
+─────────────────────────────── */
+@layer reset {
+
+  /* ↓ View Transition | CSS */
+  @view-transition { navigation: auto; } 
+  
+  /* ↓ Opt-in the whole page to interpolate sizes to/from keywords */
+  :root { interpolate-size: allow-keywords }
+
+  /* ↓ Box sizing */
+  *, *::before, *::after { box-sizing: border-box }
+
+  body, #app { isolation: isolate }
+  
+  :not(fieldset,progress,meter) {
+    border-width: 0;
+    border-style: solid;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+  }
+
+  /* ↓ HTML */
+  html {
+    height: 100%;
+    
+    /* ↓ Theme */
+    color: var(--text-2);
+    background-color: var(--surface-1);
+    
+    /* ↓ Branded accents */
+    scrollbar-color: var(--brand) transparent;
+    accent-color: var(--brand);
+    caret-color: var(--brand);
+    
+    /* ↓ values: auto, block, underscore, triangle, inherit */
+    caret-shape: block;
+    
+    /* ↓ Smooth scroll */
+    scroll-behavior: smooth;
+    &:focus-within { scroll-behavior: smooth }
+    
+    /* ↓ Prevent font size inflation */
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  body {
+    min-height: 100dvh;
+    font-size: var(--font-size-sm);
+    line-height: var(--lineheight-md);
+    margin: 0;
+    font-family: var(--font-sans);  /* ← Fallback font */
+  }
+
+  @supports (font-variation-settings: normal) {
+    body {
+      font-family: var(--font-sans); /* ← Variable font */
+      
+      font-variation-settings: 
+        "wght" var(--base-weight, 0),
+        "GRAD" var(--base-grade);
+      
+      /* When the preference is for high contrast */
+      @media (--highContrast) { --base-weight: 700; }
+      
+      /* When the preference is for low contrast */
+      @media (--lowContrast) { --base-weight: 200; }
+      
+      /* When the preference is for dark mode */
+      @media (--OSdark) { --base-grade: -25; }
+    }
+  }
+
+  /* ↓ Typography */
+  h1, h2, h3, h4, h5, h6, dt, label { color: var(--text-1) }
+  h1, h2, h3, h4 { text-wrap: balance; }
+  h1, p, button { text-box: trim-both cap alphabetic }
+  p:only-child { margin-block: 0; }
+  
+  /* Font-style: italic | bold */
+  i, em, .italic { font-variation-settings: "ital" 1 }
+  strong, b, .bold { font-variation-settings: "wght" var(--weight, 700) }
+
+  /* Remove default margin in favour of better control in authored CSS */
+  body, h1, h2, h3, h4, p, figure, blockquote, dl, dd { margin-block-end: 0 }
+
+  /* Set shorter line heights interactive elements */
+  h1, h2, h3, h4, button, input, label { line-height: var(--lineheight-2xs) }
+
+  /* Inherit fonts for inputs and buttons */
+  input, button, textarea, select { 
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  /* Picture & images */
+  img, picture { max-inline-size: 100% }
+  
+  /* Better img defaults */
+  img {
+    block-size: auto;
+    vertical-align: middle;
+    font-style: italic;
+    background-repeat: no-repeat;
+    background-size: cover;
+    shape-margin: 1rem;
+  }
+  
+  @media (--OSdark) {
+    img {
+      filter: brightness(.8) contrast(1.2);
+    }
+  }
+  
+  /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+  ul[role="list"], ol[role="list"] {
+    list-style: "";
+    padding: 0;
+  }
+
+  /* Scroll Margin | Anything anchored should have extra scroll margin */
+  :target { scroll-margin-block: 5ex }
+
+  /* Mobile Tap Delay | Make taps 300ms faster */
+  a[href], area, button, input, label[for], select, summary, textarea, [tabindex]:not([tabindex*="-"]) {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Container Type  */
+  header, footer, main, section, article { container-type: inline-size }
+
+  /* Elements */
+  hr {
+    --width: 100%;
+    width: var(--width);
+  }
+  
+  /* A elements that don't have a class get default styles */
+  a:not([class]) {
+    text-decoration-skip-ink: auto; /* skip the descenders letters and symbols (q, y, j, g) */
+    color: currentColor;
+  }
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) { min-height: 10em }
+
+/* Allow grid & flex children to shrink */
+:where(.flex, .flex-inline, .grid, .grid-inline) > * { min-width: 0 }

@@ -1,0 +1,73 @@
+/*  TOC
+─────────────────────────────────
+Theme
+Shadows
+focus
+─────────────────────────────── */
+/* 
+// MARK: Theme
+Theme
+*/
+
+:root {
+  color-scheme: light dark;
+
+  --brand: light-dark(var(--brand-6), var(--brand-4));
+
+  --text-1: light-dark(var(--gray-8), var(--gray-2));
+  --text-2: light-dark(var(--gray-7), var(--gray-4));
+
+  --surface-0: light-dark(white, var(--gray-13));
+  --surface-1: light-dark(var(--gray-0), var(--gray-12));
+  --surface-2: light-dark(var(--gray-1), var(--gray-11));
+  --surface-3: light-dark(var(--gray-2), var(--gray-10));
+  --surface-4: light-dark(var(--gray-3), var(--gray-9));
+
+  --danger: light-dark(var(--red-5), var(--red-3));
+  --warning: light-dark(var(--orange-5), var(--orange-3));
+  --success: light-dark(var(--green-5), var(--green-3));
+  --info: light-dark(var(--purple-5), var(--purple-3));
+}
+
+/* User preference color-scheme: light */
+[color-scheme='light'] { color-scheme: light }
+
+/* User preference color-scheme: dark */
+[color-scheme='dark'] { color-scheme: dark }
+
+/* 
+// MARK: Shadows
+Shadows
+*/
+
+/* Shadows color-scheme: light */
+:root {
+  --shadow-color: 220 3% 15%;
+  --shadow-strength: 1%;
+  --inner-shadow-highlight: inset 0 -0.5px 0 0 #fff, inset 0 0.5px 0 0 #0001;
+
+  /* Shadows color-scheme: dark */
+  @media (--OSdark) {
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+    --inner-shadow-highlight: inset 0 -0.5px 0 0 #fff1, inset 0 0.5px 0 0 #0007;
+  }
+}
+
+
+/* 
+// MARK: Focus
+Focus
+*/
+
+/* focus */
+@media (--motionOK) {
+  :focus-visible { transition: 
+    outline-offset 75ms ease-out, 
+    box-shadow 75ms ease;  
+  }
+  :not(:active):focus-visible { 
+    transition-duration: .25s
+  }
+}
+:not(:active):focus-visible { outline-offset: .5rem }

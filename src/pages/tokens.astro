@@ -1,0 +1,1425 @@
+---
+import Layout from '../layouts/Layout.astro';
+const colors = [
+  { name: '--brand-0' },
+  { name: '--brand-1' },
+  { name: '--brand-2' },
+  { name: '--brand-3' },
+  { name: '--brand-4' },
+  { name: '--brand-5' },
+  { name: '--brand-7' },
+  { name: '--brand-8' },
+  { name: '--brand-9' },
+  { name: '--brand-10' },
+  { name: '--brand-11' },
+  { name: '--brand-12' },
+  { name: '--brand-13' },
+  { name: '--brand-14' },
+  { name: '--brand-15' },
+  // Red
+  { name: '--red-0' },
+  { name: '--red-1' },
+  { name: '--red-2' },
+  { name: '--red-3' },
+  { name: '--red-4' },
+  { name: '--red-5' },
+  { name: '--red-7' },
+  { name: '--red-8' },
+  { name: '--red-9' },
+  { name: '--red-10' },
+  { name: '--red-11' },
+  { name: '--red-12' },
+  { name: '--red-13' },
+  { name: '--red-14' },
+  { name: '--red-15' },
+  // Pink
+  { name: '--pink-0'  },
+  { name: '--pink-1'  },
+  { name: '--pink-2'  },
+  { name: '--pink-3'  },
+  { name: '--pink-4'  },
+  { name: '--pink-5'  },
+  { name: '--pink-7'  },
+  { name: '--pink-8'  },
+  { name: '--pink-9'  },
+  { name: '--pink-10' },
+  { name: '--pink-11' },
+  { name: '--pink-12' },
+  { name: '--pink-13' },
+  { name: '--pink-14' },
+  { name: '--pink-15' },
+  // Purple
+  { name: '--purple-0' },
+  { name: '--purple-1' },
+  { name: '--purple-2' },
+  { name: '--purple-3' },
+  { name: '--purple-4' },
+  { name: '--purple-5' },
+  { name: '--purple-7' },
+  { name: '--purple-8' },
+  { name: '--purple-9' },
+  { name: '--purple-10' },
+  { name: '--purple-11' },
+  { name: '--purple-12' },
+  { name: '--purple-13' },
+  { name: '--purple-14' },
+  { name: '--purple-15' },
+  // Violet
+  { name: '--violet-0' },
+  { name: '--violet-1' },
+  { name: '--violet-2' },
+  { name: '--violet-3' },
+  { name: '--violet-4' },
+  { name: '--violet-5' },
+  { name: '--violet-7' },
+  { name: '--violet-8' },
+  { name: '--violet-9' },
+  { name: '--violet-10' },
+  { name: '--violet-11' },
+  { name: '--violet-12' },
+  { name: '--violet-13' },
+  { name: '--violet-14' },
+  { name: '--violet-15' },
+  // Indigo
+  { name: '--indigo-0' },
+  { name: '--indigo-1' },
+  { name: '--indigo-2' },
+  { name: '--indigo-3' },
+  { name: '--indigo-4' },
+  { name: '--indigo-5' },
+  { name: '--indigo-7' },
+  { name: '--indigo-8' },
+  { name: '--indigo-9' },
+  { name: '--indigo-10' },
+  { name: '--indigo-11' },
+  { name: '--indigo-12' },
+  { name: '--indigo-13' },
+  { name: '--indigo-14' },
+  { name: '--indigo-15' },
+  // Blue
+  { name: '--blue-0' },
+  { name: '--blue-1' },
+  { name: '--blue-2' },
+  { name: '--blue-3' },
+  { name: '--blue-4' },
+  { name: '--blue-5' },
+  { name: '--blue-7' },
+  { name: '--blue-8' },
+  { name: '--blue-9' },
+  { name: '--blue-10' },
+  { name: '--blue-11' },
+  { name: '--blue-12' },
+  { name: '--blue-13' },
+  { name: '--blue-14' },
+  { name: '--blue-15' },
+  // Cyan
+  { name: '--cyan-0' },
+  { name: '--cyan-1' },
+  { name: '--cyan-2' },
+  { name: '--cyan-3' },
+  { name: '--cyan-4' },
+  { name: '--cyan-5' },
+  { name: '--cyan-7' },
+  { name: '--cyan-8' },
+  { name: '--cyan-9' },
+  { name: '--cyan-10' },
+  { name: '--cyan-11' },
+  { name: '--cyan-12' },
+  { name: '--cyan-13' },
+  { name: '--cyan-14' },
+  { name: '--cyan-15' },
+  // Teal
+  { name: '--teal-0'  },
+  { name: '--teal-1'  },
+  { name: '--teal-2'  },
+  { name: '--teal-3'  },
+  { name: '--teal-4'  },
+  { name: '--teal-5'  },
+  { name: '--teal-7'  },
+  { name: '--teal-8'  },
+  { name: '--teal-9'  },
+  { name: '--teal-10' },
+  { name: '--teal-11' },
+  { name: '--teal-12' },
+  { name: '--teal-13' },
+  { name: '--teal-14' },
+  { name: '--teal-15' },
+  // Green
+  { name: '--green-0'  },
+  { name: '--green-1'  },
+  { name: '--green-2'  },
+  { name: '--green-3'  },
+  { name: '--green-4'  },
+  { name: '--green-5'  },
+  { name: '--green-7'  },
+  { name: '--green-8'  },
+  { name: '--green-9'  },
+  { name: '--green-10' },
+  { name: '--green-11' },
+  { name: '--green-12' },
+  { name: '--green-13' },
+  { name: '--green-14' },
+  { name: '--green-15' },
+  // Lime
+  { name: '--lime-0'  },
+  { name: '--lime-1'  },
+  { name: '--lime-2'  },
+  { name: '--lime-3'  },
+  { name: '--lime-4'  },
+  { name: '--lime-5'  },
+  { name: '--lime-7'  },
+  { name: '--lime-8'  },
+  { name: '--lime-9'  },
+  { name: '--lime-10' },
+  { name: '--lime-11' },
+  { name: '--lime-12' },
+  { name: '--lime-13' },
+  { name: '--lime-14' },
+  { name: '--lime-15' },
+  // Yellow
+  { name: '--yellow-0'  },
+  { name: '--yellow-1'  },
+  { name: '--yellow-2'  },
+  { name: '--yellow-3'  },
+  { name: '--yellow-4'  },
+  { name: '--yellow-5'  },
+  { name: '--yellow-7'  },
+  { name: '--yellow-8'  },
+  { name: '--yellow-9'  },
+  { name: '--yellow-10' },
+  { name: '--yellow-11' },
+  { name: '--yellow-12' },
+  { name: '--yellow-13' },
+  { name: '--yellow-14' },
+  { name: '--yellow-15' },
+  //Orange
+  { name: '--orange-0'  },
+  { name: '--orange-1'  },
+  { name: '--orange-2'  },
+  { name: '--orange-3'  },
+  { name: '--orange-4'  },
+  { name: '--orange-5'  },
+  { name: '--orange-7'  },
+  { name: '--orange-8'  },
+  { name: '--orange-9'  },
+  { name: '--orange-10' },
+  { name: '--orange-11' },
+  { name: '--orange-12' },
+  { name: '--orange-13' },
+  { name: '--orange-14' },
+  { name: '--orange-15' },
+  // Gray
+  { name: '--gray-0'  },
+  { name: '--gray-1'  },
+  { name: '--gray-2'  },
+  { name: '--gray-3'  },
+  { name: '--gray-4'  },
+  { name: '--gray-5'  },
+  { name: '--gray-7'  },
+  { name: '--gray-8'  },
+  { name: '--gray-9'  },
+  { name: '--gray-10' },
+  { name: '--gray-11' },
+  { name: '--gray-12' },
+  { name: '--gray-13' },
+  { name: '--gray-14' },
+  { name: '--gray-15' },
+  // Gray Cool
+  { name: '--gray-cool-0' },
+  { name: '--gray-cool-1' },
+  { name: '--gray-cool-2' },
+  { name: '--gray-cool-3' },
+  { name: '--gray-cool-4' },
+  { name: '--gray-cool-5' },
+  { name: '--gray-cool-7' },
+  { name: '--gray-cool-8' },
+  { name: '--gray-cool-9' },
+  { name: '--gray-cool-10' },
+  { name: '--gray-cool-11' },
+  { name: '--gray-cool-12' },
+  { name: '--gray-cool-13' },
+  { name: '--gray-cool-14' },
+  { name: '--gray-cool-15' },
+  // Gray Warm
+  { name: '--gray-warm-0' },
+  { name: '--gray-warm-1' },
+  { name: '--gray-warm-2' },
+  { name: '--gray-warm-3' },
+  { name: '--gray-warm-4' },
+  { name: '--gray-warm-5' },
+  { name: '--gray-warm-7' },
+  { name: '--gray-warm-8' },
+  { name: '--gray-warm-9' },
+  { name: '--gray-warm-10' },
+  { name: '--gray-warm-11' },
+  { name: '--gray-warm-12' },
+  { name: '--gray-warm-13' },
+  { name: '--gray-warm-14' },
+  { name: '--gray-warm-15' } 
+   // Add additional colors here...
+];
+
+const spaces = [
+  { name: '--space-3xs' },
+  { name: '--space-2xs' },
+  { name: '--space-sm' },
+  { name: '--space-md' },
+  { name: '--space-lg' },
+  { name: '--space-xl' },
+  { name: '--space-2xl' },
+  { name: '--space-3xl' },
+
+  { name: '--space-3xs-2xs' },
+  { name: '--space-2xs-xs' },
+  { name: '--space-xs-sm' },
+  { name: '--space-sm-md' },
+  { name: '--space-lg-xl' },
+  { name: '--space-xl-2xl' },
+  { name: '--space-2xl-3xl' },
+
+  { name: '--space-sm-xl' },
+  { name: '--space-sm-2xl' },
+  { name: '--space-sm-3xl' },
+   // Add additional spaces here...
+];
+
+const fontSize = [
+  { name: '--font-size-xs' },
+  { name: '--font-size-sm' },
+  { name: '--font-size-md' },
+  { name: '--font-size-lg' },
+  { name: '--font-size-xl' },
+  { name: '--font-size-2xl' },
+  { name: '--font-size-3xl' },
+  { name: '--font-size-4xl' },
+   // Add additional font sizes here...
+];
+
+const lineheight = [
+  { name: '--lineheight-3xs' },
+  { name: '--lineheight-2xs' },
+  { name: '--lineheight-xs' },
+  { name: '--lineheight-sm' },
+  { name: '--lineheight-md' },
+  { name: '--lineheight-lg' },
+  { name: '--lineheight-xl' },
+   // Add additional line heights here...
+];
+
+const letterspacing = [
+  { name: '--letterspacing-xs' },
+  { name: '--letterspacing-sm' },
+  { name: '--letterspacing-md' },
+  { name: '--letterspacing-lg' },
+  { name: '--letterspacing-xl' },
+  { name: '--letterspacing-2xl' },
+  { name: '--letterspacing-3xl' },
+  { name: '--letterspacing-4xl' },
+   // Add additional line heights here...
+];
+
+const measure = [
+  { 
+    name: '--measure-sm',
+    text: 'By Jove, my quick study of lexicography won!'
+   },
+  { 
+    name: '--measure-md',
+    text: 'By Jove, my quick study of lexicography won a prize how vexingly quick daft zebras jump!'
+  },
+  { 
+    name: '--measure-lg',
+    text: 'By Jove, my quick study of lexicography won a prize how vexingly quick daft zebras jump! Quick zephyrs blow, vexing daft Jim.'
+  },
+  { 
+    name: '--measure-xl',
+    text: 'By Jove, my quick study of lexicography won a prize how vexingly quick daft zebras jump! Quick zephyrs blow, vexing daft Jim. The five boxing wizards jump quickly'
+  },
+   // Add additional measures here...
+];
+
+const border = [
+  { name: '--border-size-sm' },
+  { name: '--border-size-md' },
+  { name: '--border-size-lg' },
+   // Add additional Radius here...
+];
+
+const radius = [
+  { name: '--radius-0' },
+  { name: '--radius-sm' },
+  { name: '--radius-md' },
+  { name: '--radius-lg' },
+  { name: '--radius-xl' },
+  { name: '--radius-ellipse' },
+   // Add additional Radius here...
+];
+
+const radiusConditional = [
+  { name: '--radius-conditional-sm' },
+  { name: '--radius-conditional-md' },
+  { name: '--radius-conditional-lg' },
+  { name: '--radius-conditional-xl' },
+   // Add additional conditional Radius here...
+];
+
+const radiusBlob = [
+  { name: '--radius-blob-1' },
+  { name: '--radius-blob-2' },
+  { name: '--radius-blob-3' },
+  { name: '--radius-blob-4' },
+  { name: '--radius-blob-5' },
+   // Add additional conditional Radius here...
+];
+
+const aspectRatio = [
+  { name: '--ratio-square' },
+  { name: '--ratio-landscape' },
+  { name: '--ratio-portrait' },
+  { name: '--ratio-widescreen' },
+  { name: '--ratio-ultrawide' },
+  { name: '--ratio-golden' },
+   // Add additional conditional Radius here...
+];
+
+const zindex = [
+  { name: '--layer-1' },
+  { name: '--layer-2' },
+  { name: '--layer-3' },
+  { name: '--layer-4' },
+  { name: '--layer-5' },
+  // { name: '--layer-important' },
+   // Add additional conditional Radius here...
+];
+
+const boxShadow = [
+  { name: '--shadow-1' },
+  { name: '--shadow-2' },
+  { name: '--shadow-3' },
+  { name: '--shadow-4' },
+  { name: '--shadow-5' },
+  { name: '--shadow-6' },
+  { name: '--inner-shadow-1' },
+  { name: '--inner-shadow-2' },
+  { name: '--inner-shadow-3' },
+  { name: '--inner-shadow-4' },
+  { name: '--inner-shadow-5' },
+   // Add additional conditional Radius here...
+];
+
+const gradients = [
+  { name: '--gradient-1' },
+  { name: '--gradient-2' },
+  { name: '--gradient-3' },
+  { name: '--gradient-4' },
+  { name: '--gradient-5' },
+  { name: '--gradient-6' },
+  { name: '--gradient-7' }, 
+  { name: '--gradient-8' },
+  { name: '--gradient-9' },
+  { name: '--gradient-10' },
+  { name: '--gradient-11' },
+  { name: '--gradient-12' },    
+  { name: '--gradient-13' },
+  { name: '--gradient-14' },    
+  { name: '--gradient-15' },
+  { name: '--gradient-16' },    
+  { name: '--gradient-17' },      
+  { name: '--gradient-18' },      
+  { name: '--gradient-19' },      
+  { name: '--gradient-20' },      
+  { name: '--gradient-21' },      
+  { name: '--gradient-22' },      
+  { name: '--gradient-23' },      
+  { name: '--gradient-24' },      
+  { name: '--gradient-25' },      
+  { name: '--gradient-26' },      
+  { name: '--gradient-27' },      
+  { name: '--gradient-28' },      
+  { name: '--gradient-29' },      
+  { name: '--gradient-30' },
+   // Add additional conditional Radius here...
+];
+---
+<style>
+  aside{
+  position: sticky;
+  top:0;
+}
+.table-autoscroll {
+  overflow: auto;
+  width: 100%;
+}
+
+ table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 1px;
+  text-align: left;
+}
+
+th, td { 
+  border-bottom: 1px solid var(--surface-3);
+  padding: var(--space-xs) var(--space-2xs); 
+}
+
+ th {
+    border-top: 1px solid var(--surface-3);
+    background-color: var(--surface-2);
+    color: var(--text-1);
+}
+ td {
+   align-content: flex-start;
+    color: var(--text-2);
+}
+main {
+  display: grid;
+  grid-template-columns: 1fr minmax(150px, 25%);
+  gap: var(--space-2xl);
+  padding-inline: var(--space-lg);
+  align-items: flex-start;
+}
+.swatch {
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+}
+.space-swatch {
+  border-radius: var(--radius-md);
+  width: var(--space-3xs);
+  height: auto;
+  aspect-ratio: 1;
+  background-color: var(--surface-4);
+}
+
+.rad-swatch {
+  width: var(--space-3xl);
+  aspect-ratio: 1;
+  background-color: var(--surface-4);
+}
+
+.shadow-swatch {
+  width: var(--space-3xl);
+  aspect-ratio: 1;
+  background-color: var(--surface-1);
+}
+
+.ratio-swatch {
+  width: var(--space-3xl);
+  background-color: var(--surface-4);
+}
+
+.bg-brand-0 { background-color: var(--brand-0) }
+.bg-brand-1 { background-color: var(--brand-1) }
+.bg-brand-2 { background-color: var(--brand-2) }
+.bg-brand-3 { background-color: var(--brand-3) }
+.bg-brand-4 { background-color: var(--brand-4) }
+.bg-brand-5 { background-color: var(--brand-5) }
+.bg-brand-6 { background-color: var(--brand-6) }
+.bg-brand-7 { background-color: var(--brand-7) }
+.bg-brand-8 { background-color: var(--brand-8) }
+.bg-brand-9 { background-color: var(--brand-9) }
+.bg-brand-10 { background-color: var(--brand-10) }
+.bg-brand-11 { background-color: var(--brand-11) }
+.bg-brand-12 { background-color: var(--brand-12) }
+.bg-brand-13 { background-color: var(--brand-13) }
+.bg-brand-14 { background-color: var(--brand-14) }
+.bg-brand-15 { background-color: var(--brand-15) }
+
+.bg-red-0 { background-color: var(--red-0) }
+.bg-red-1 { background-color: var(--red-1) }
+.bg-red-2 { background-color: var(--red-2) }
+.bg-red-3 { background-color: var(--red-3) }
+.bg-red-4 { background-color: var(--red-4) }
+.bg-red-5 { background-color: var(--red-5) }
+.bg-red-6 { background-color: var(--red-6) }
+.bg-red-7 { background-color: var(--red-7) }
+.bg-red-8 { background-color: var(--red-8) }
+.bg-red-9 { background-color: var(--red-9) }
+.bg-red-10 { background-color: var(--red-10) }
+.bg-red-11 { background-color: var(--red-11) }
+.bg-red-12 { background-color: var(--red-12) }
+.bg-red-13 { background-color: var(--red-13) }
+.bg-red-14 { background-color: var(--red-14) }
+.bg-red-15 { background-color: var(--red-15) }
+
+.bg-pink-0 { background-color: var(--pink-0) }
+.bg-pink-1 { background-color: var(--pink-1) }
+.bg-pink-2 { background-color: var(--pink-2) }
+.bg-pink-3 { background-color: var(--pink-3) }
+.bg-pink-4 { background-color: var(--pink-4) }
+.bg-pink-5 { background-color: var(--pink-5) }
+.bg-pink-6 { background-color: var(--pink-6) }
+.bg-pink-7 { background-color: var(--pink-7) }
+.bg-pink-8 { background-color: var(--pink-8) }
+.bg-pink-9 { background-color: var(--pink-9) }
+.bg-pink-10 { background-color: var(--pink-10) }
+.bg-pink-11 { background-color: var(--pink-11) }
+.bg-pink-12 { background-color: var(--pink-12) }
+.bg-pink-13 { background-color: var(--pink-13) }
+.bg-pink-14 { background-color: var(--pink-14) }
+.bg-pink-15 { background-color: var(--pink-15) }
+
+.bg-purple-0 { background-color: var(--purple-0) }
+.bg-purple-1 { background-color: var(--purple-1) }
+.bg-purple-2 { background-color: var(--purple-2) }
+.bg-purple-3 { background-color: var(--purple-3) }
+.bg-purple-4 { background-color: var(--purple-4) }
+.bg-purple-5 { background-color: var(--purple-5) }
+.bg-purple-6 { background-color: var(--purple-6) }
+.bg-purple-7 { background-color: var(--purple-7) }
+.bg-purple-8 { background-color: var(--purple-8) }
+.bg-purple-9 { background-color: var(--purple-9) }
+.bg-purple-10 { background-color: var(--purple-10) }
+.bg-purple-11 { background-color: var(--purple-11) }
+.bg-purple-12 { background-color: var(--purple-12) }
+.bg-purple-13 { background-color: var(--purple-13) }
+.bg-purple-14 { background-color: var(--purple-14) }
+.bg-purple-15 { background-color: var(--purple-15) }
+
+.bg-violet-0 { background-color: var(--violet-0) }
+.bg-violet-1 { background-color: var(--violet-1) }
+.bg-violet-2 { background-color: var(--violet-2) }
+.bg-violet-3 { background-color: var(--violet-3) }
+.bg-violet-4 { background-color: var(--violet-4) }
+.bg-violet-5 { background-color: var(--violet-5) }
+.bg-violet-6 { background-color: var(--violet-6) }
+.bg-violet-7 { background-color: var(--violet-7) }
+.bg-violet-8 { background-color: var(--violet-8) }
+.bg-violet-9 { background-color: var(--violet-9) }
+.bg-violet-10 { background-color: var(--violet-10) }
+.bg-violet-11 { background-color: var(--violet-11) }
+.bg-violet-12 { background-color: var(--violet-12) }
+.bg-violet-13 { background-color: var(--violet-13) }
+.bg-violet-14 { background-color: var(--violet-14) }
+.bg-violet-15 { background-color: var(--violet-15) }
+
+.bg-indigo-0 { background-color: var(--indigo-0) }
+.bg-indigo-1 { background-color: var(--indigo-1) }
+.bg-indigo-2 { background-color: var(--indigo-2) }
+.bg-indigo-3 { background-color: var(--indigo-3) }
+.bg-indigo-4 { background-color: var(--indigo-4) }
+.bg-indigo-5 { background-color: var(--indigo-5) }
+.bg-indigo-6 { background-color: var(--indigo-6) }
+.bg-indigo-7 { background-color: var(--indigo-7) }
+.bg-indigo-8 { background-color: var(--indigo-8) }
+.bg-indigo-9 { background-color: var(--indigo-9) }
+.bg-indigo-10 { background-color: var(--indigo-10) }
+.bg-indigo-11 { background-color: var(--indigo-11) }
+.bg-indigo-12 { background-color: var(--indigo-12) }
+.bg-indigo-13 { background-color: var(--indigo-13) }
+.bg-indigo-14 { background-color: var(--indigo-14) }
+.bg-indigo-15 { background-color: var(--indigo-15) }
+
+.bg-blue-0 { background-color: var(--blue-0) }
+.bg-blue-1 { background-color: var(--blue-1) }
+.bg-blue-2 { background-color: var(--blue-2) }
+.bg-blue-3 { background-color: var(--blue-3) }
+.bg-blue-4 { background-color: var(--blue-4) }
+.bg-blue-5 { background-color: var(--blue-5) }
+.bg-blue-6 { background-color: var(--blue-6) }
+.bg-blue-7 { background-color: var(--blue-7) }
+.bg-blue-8 { background-color: var(--blue-8) }
+.bg-blue-9 { background-color: var(--blue-9) }
+.bg-blue-10 { background-color: var(--blue-10) }
+.bg-blue-11 { background-color: var(--blue-11) }
+.bg-blue-12 { background-color: var(--blue-12) }
+.bg-blue-13 { background-color: var(--blue-13) }
+.bg-blue-14 { background-color: var(--blue-14) }
+.bg-blue-15 { background-color: var(--blue-15) }
+
+.bg-cyan-0 { background-color: var(--cyan-0) }
+.bg-cyan-1 { background-color: var(--cyan-1) }
+.bg-cyan-2 { background-color: var(--cyan-2) }
+.bg-cyan-3 { background-color: var(--cyan-3) }
+.bg-cyan-4 { background-color: var(--cyan-4) }
+.bg-cyan-5 { background-color: var(--cyan-5) }
+.bg-cyan-6 { background-color: var(--cyan-6) }
+.bg-cyan-7 { background-color: var(--cyan-7) }
+.bg-cyan-8 { background-color: var(--cyan-8) }
+.bg-cyan-9 { background-color: var(--cyan-9) }
+.bg-cyan-10 { background-color: var(--cyan-10) }
+.bg-cyan-11 { background-color: var(--cyan-11) }
+.bg-cyan-12 { background-color: var(--cyan-12) }
+.bg-cyan-13 { background-color: var(--cyan-13) }
+.bg-cyan-14 { background-color: var(--cyan-14) }
+.bg-cyan-15 { background-color: var(--cyan-15) }
+
+.bg-teal-0 { background-color: var(--teal-0) }
+.bg-teal-1 { background-color: var(--teal-1) }
+.bg-teal-2 { background-color: var(--teal-2) }
+.bg-teal-3 { background-color: var(--teal-3) }
+.bg-teal-4 { background-color: var(--teal-4) }
+.bg-teal-5 { background-color: var(--teal-5) }
+.bg-teal-6 { background-color: var(--teal-6) }
+.bg-teal-7 { background-color: var(--teal-7) }
+.bg-teal-8 { background-color: var(--teal-8) }
+.bg-teal-9 { background-color: var(--teal-9) }
+.bg-teal-10 { background-color: var(--teal-10) }
+.bg-teal-11 { background-color: var(--teal-11) }
+.bg-teal-12 { background-color: var(--teal-12) }
+.bg-teal-13 { background-color: var(--teal-13) }
+.bg-teal-14 { background-color: var(--teal-14) }
+.bg-teal-15 { background-color: var(--teal-15) }
+
+.bg-green-0 { background-color: var(--green-0) }
+.bg-green-1 { background-color: var(--green-1) }
+.bg-green-2 { background-color: var(--green-2) }
+.bg-green-3 { background-color: var(--green-3) }
+.bg-green-4 { background-color: var(--green-4) }
+.bg-green-5 { background-color: var(--green-5) }
+.bg-green-6 { background-color: var(--green-6) }
+.bg-green-7 { background-color: var(--green-7) }
+.bg-green-8 { background-color: var(--green-8) }
+.bg-green-9 { background-color: var(--green-9) }
+.bg-green-10 { background-color: var(--green-10) }
+.bg-green-11 { background-color: var(--green-11) }
+.bg-green-12 { background-color: var(--green-12) }
+.bg-green-13 { background-color: var(--green-13) }
+.bg-green-14 { background-color: var(--green-14) }
+.bg-green-15 { background-color: var(--green-15) }
+
+.bg-lime-0 { background-color: var(--lime-0) }
+.bg-lime-1 { background-color: var(--lime-1) }
+.bg-lime-2 { background-color: var(--lime-2) }
+.bg-lime-3 { background-color: var(--lime-3) }
+.bg-lime-4 { background-color: var(--lime-4) }
+.bg-lime-5 { background-color: var(--lime-5) }
+.bg-lime-6 { background-color: var(--lime-6) }
+.bg-lime-7 { background-color: var(--lime-7) }
+.bg-lime-8 { background-color: var(--lime-8) }
+.bg-lime-9 { background-color: var(--lime-9) }
+.bg-lime-10 { background-color: var(--lime-10) }
+.bg-lime-11 { background-color: var(--lime-11) }
+.bg-lime-12 { background-color: var(--lime-12) }
+.bg-lime-13 { background-color: var(--lime-13) }
+.bg-lime-14 { background-color: var(--lime-14) }
+.bg-lime-15 { background-color: var(--lime-15) }
+
+.bg-yellow-0 { background-color: var(--yellow-0) }
+.bg-yellow-1 { background-color: var(--yellow-1) }
+.bg-yellow-2 { background-color: var(--yellow-2) }
+.bg-yellow-3 { background-color: var(--yellow-3) }
+.bg-yellow-4 { background-color: var(--yellow-4) }
+.bg-yellow-5 { background-color: var(--yellow-5) }
+.bg-yellow-6 { background-color: var(--yellow-6) }
+.bg-yellow-7 { background-color: var(--yellow-7) }
+.bg-yellow-8 { background-color: var(--yellow-8) }
+.bg-yellow-9 { background-color: var(--yellow-9) }
+.bg-yellow-10 { background-color: var(--yellow-10) }
+.bg-yellow-11 { background-color: var(--yellow-11) }
+.bg-yellow-12 { background-color: var(--yellow-12) }
+.bg-yellow-13 { background-color: var(--yellow-13) }
+.bg-yellow-14 { background-color: var(--yellow-14) }
+.bg-yellow-15 { background-color: var(--yellow-15) } 
+
+.bg-orange-0 { background-color: var(--orange-0) }
+.bg-orange-1 { background-color: var(--orange-1) }
+.bg-orange-2 { background-color: var(--orange-2) }
+.bg-orange-3 { background-color: var(--orange-3) }
+.bg-orange-4 { background-color: var(--orange-4) }
+.bg-orange-5 { background-color: var(--orange-5) }
+.bg-orange-6 { background-color: var(--orange-6) }
+.bg-orange-7 { background-color: var(--orange-7) }
+.bg-orange-8 { background-color: var(--orange-8) }
+.bg-orange-9 { background-color: var(--orange-9) }
+.bg-orange-10 { background-color: var(--orange-10) }
+.bg-orange-11 { background-color: var(--orange-11) }
+.bg-orange-12 { background-color: var(--orange-12) }
+.bg-orange-13 { background-color: var(--orange-13) }
+.bg-orange-14 { background-color: var(--orange-14) }
+.bg-orange-15 { background-color: var(--orange-15) }
+
+.bg-gray-0 { background-color: var(--gray-0) }
+.bg-gray-1 { background-color: var(--gray-1) }
+.bg-gray-2 { background-color: var(--gray-2) }
+.bg-gray-3 { background-color: var(--gray-3) }
+.bg-gray-4 { background-color: var(--gray-4) }
+.bg-gray-5 { background-color: var(--gray-5) }
+.bg-gray-6 { background-color: var(--gray-6) }  
+.bg-gray-7 { background-color: var(--gray-7) }    
+.bg-gray-8 { background-color: var(--gray-8) }
+.bg-gray-9 { background-color: var(--gray-9) }
+.bg-gray-10 { background-color: var(--gray-10) }
+.bg-gray-11 { background-color: var(--gray-11) }
+.bg-gray-12 { background-color: var(--gray-12) }
+.bg-gray-13 { background-color: var(--gray-13) }
+.bg-gray-14 { background-color: var(--gray-14) }
+.bg-gray-15 { background-color: var(--gray-15) }
+
+.bg-gray-cool-0 { background-color: var(--gray-cool-0) }
+.bg-gray-cool-1 { background-color: var(--gray-cool-1) }
+.bg-gray-cool-2 { background-color: var(--gray-cool-2) }
+.bg-gray-cool-3 { background-color: var(--gray-cool-3) }  
+.bg-gray-cool-4 { background-color: var(--gray-cool-4) }
+.bg-gray-cool-5 { background-color: var(--gray-cool-5) }
+.bg-gray-cool-6 { background-color: var(--gray-cool-6) }
+.bg-gray-cool-7 { background-color: var(--gray-cool-7) }
+.bg-gray-cool-8 { background-color: var(--gray-cool-8) }
+.bg-gray-cool-9 { background-color: var(--gray-cool-9) }
+.bg-gray-cool-10 { background-color: var(--gray-cool-10) }
+.bg-gray-cool-11 { background-color: var(--gray-cool-11) }
+.bg-gray-cool-12 { background-color: var(--gray-cool-12) }
+.bg-gray-cool-13 { background-color: var(--gray-cool-13) }
+.bg-gray-cool-14 { background-color: var(--gray-cool-14) }
+.bg-gray-cool-15 { background-color: var(--gray-cool-15) }
+
+.bg-gray-warm-0 { background-color: var(--gray-warm-0) }
+.bg-gray-warm-1 { background-color: var(--gray-warm-1) }
+.bg-gray-warm-2 { background-color: var(--gray-warm-2) }
+.bg-gray-warm-3 { background-color: var(--gray-warm-3) }
+.bg-gray-warm-4 { background-color: var(--gray-warm-4) }
+.bg-gray-warm-5 { background-color: var(--gray-warm-5) }
+.bg-gray-warm-6 { background-color: var(--gray-warm-6) }
+.bg-gray-warm-7 { background-color: var(--gray-warm-7) }
+.bg-gray-warm-8 { background-color: var(--gray-warm-8) }
+.bg-gray-warm-9 { background-color: var(--gray-warm-9) }
+.bg-gray-warm-10 { background-color: var(--gray-warm-10) }
+.bg-gray-warm-11 { background-color: var(--gray-warm-11) }
+.bg-gray-warm-12 { background-color: var(--gray-warm-12) }
+.bg-gray-warm-13 { background-color: var(--gray-warm-13) }
+.bg-gray-warm-14 { background-color: var(--gray-warm-14) }
+.bg-gray-warm-15 { background-color: var(--gray-warm-15) }
+
+.space-3xs { width: var(--space-3xs) }
+.space-2xs { width: var(--space-2xs) }
+.space-xs { width: var(--space-xs) }
+.space-sm { width: var(--space-sm) }
+.space-md { width: var(--space-md) }
+.space-lg { width: var(--space-lg) }
+.space-xl { width: var(--space-xl) }
+.space-2xl { width: var(--space-2xl) }
+.space-3xl { width: var(--space-3xl) }
+
+.space-3xs-2xs { width: var(--space-3xs-2xs) }
+.space-2xs-xs { width: var(--space-2xs-xs) }
+.space-xs-sm { width: var(--space-xs-sm) }
+.space-sm-md { width: var(--space-sm-md) }
+
+.space-md-lg { width: var(--space-md-lg) }
+.space-lg-xl { width: var(--space-lg-xl) }
+.space-xl-2xl { width: var(--space-xl-2xl) }
+.space-2xl-3xl { width: var(--space-2xl-3xl) }
+
+.space-sm-xl { width: var(--space-sm-xl) }
+.space-sm-2xl { width: var(--space-sm-2xl) }
+.space-sm-3xl { width: var(--space-sm-3xl) }
+
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-md { font-size: var(--font-size-md); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+.text-3xl { font-size: var(--font-size-3xl); }
+.text-4xl { font-size: var(--font-size-4xl); }
+
+.lineheight-3xs { line-height: var(--lineheight-3xs); }
+.lineheight-2xs { line-height: var(--lineheight-2xs); }
+.lineheight-xs { line-height: var(--lineheight-xs); }
+.lineheight-sm { line-height: var(--lineheight-sm); }
+.lineheight-md { line-height: var(--lineheight-md); }
+.lineheight-lg { line-height: var(--lineheight-lg); }
+.lineheight-xl { line-height: var(--lineheight-xl); }
+
+.letterspacing-xs { letter-spacing: var(--letterspacing-xs); }
+.letterspacing-sm { letter-spacing: var(--letterspacing-sm); }
+.letterspacing-md { letter-spacing: var(--letterspacing-md); }
+.letterspacing-lg { letter-spacing: var(--letterspacing-lg); }
+.letterspacing-xl { letter-spacing: var(--letterspacing-xl); }
+.letterspacing-2xl { letter-spacing: var(--letterspacing-2xl); }
+.letterspacing-3xl { letter-spacing: var(--letterspacing-3xl); }
+.letterspacing-4xl { letter-spacing: var(--letterspacing-4xl); }
+
+.measure-sm { max-width: var(--measure-sm); }
+.measure-md { max-width: var(--measure-md); }
+.measure-lg { max-width: var(--measure-lg); }
+.measure-xl { max-width: var(--measure-xl); }
+
+.radius-0 { border-radius: var(--radius-0); }
+.radius-sm { border-radius: var(--radius-sm); }
+.radius-md { border-radius: var(--radius-md); }
+.radius-lg { border-radius: var(--radius-lg); }
+.radius-xl { border-radius: var(--radius-xl); }
+.radius-2xl { border-radius: var(--radius-2xl); }
+.radius-3xl { border-radius: var(--radius-3xl); }
+.radius-ellipse { border-radius: var(--radius-ellipse); }
+
+.radius-conditional-sm { border-radius: var(--radius-sm); }
+.radius-conditional-md { border-radius: var(--radius-md); }
+.radius-conditional-lg { border-radius: var(--radius-lg); }
+.radius-conditional-xl { border-radius: var(--radius-xl); }
+
+.border-size-sm { border-width: var(--border-size-sm); }
+.border-size-md { border-width: var(--border-size-md); }
+.border-size-lg { border-width: var(--border-size-lg); }
+
+.radius-blob-1 { border-radius: var(--radius-blob-1); }
+.radius-blob-2 { border-radius: var(--radius-blob-2); }
+.radius-blob-3 { border-radius: var(--radius-blob-3); }
+.radius-blob-4 { border-radius: var(--radius-blob-4); }
+.radius-blob-5 { border-radius: var(--radius-blob-5); }
+
+.ratio-square { aspect-ratio: var(--ratio-square); }
+.ratio-landscape { aspect-ratio: var(--ratio-landscape); }
+.ratio-portrait { aspect-ratio: var(--ratio-portrait); }
+.ratio-widescreen { aspect-ratio: var(--ratio-widescreen); }
+.ratio-ultrawide { aspect-ratio: var(--ratio-ultrawide); }
+.ratio-golden { aspect-ratio: var(--ratio-golden); }
+
+.layer-1 { z-index: var(--layer-1); }
+.layer-2 { z-index: var(--layer-2); }
+.layer-3 { z-index: var(--layer-3); }
+.layer-4 { z-index: var(--layer-4); }
+.layer-5 { z-index: var(--layer-5); }
+.layer-important { z-index: var(--layer-important); }
+
+.shadow-1 { box-shadow: var(--shadow-1); }
+.shadow-2 { box-shadow: var(--shadow-2); }
+.shadow-3 { box-shadow: var(--shadow-3); }
+.shadow-4 { box-shadow: var(--shadow-4); }
+.shadow-5 { box-shadow: var(--shadow-5); }
+.shadow-6 { box-shadow: var(--shadow-6); }
+
+.inner-shadow-1 { box-shadow: var(--inner-shadow-1); }
+.inner-shadow-2 { box-shadow: var(--inner-shadow-2); }
+.inner-shadow-3 { box-shadow: var(--inner-shadow-3); }
+.inner-shadow-4 { box-shadow: var(--inner-shadow-4); }
+.inner-shadow-5 { box-shadow: var(--inner-shadow-5); }
+
+.gradient-1 { background-image: var(--gradient-1); }
+.gradient-2 { background-image: var(--gradient-2); }
+.gradient-3 { background-image: var(--gradient-3); }
+.gradient-4 { background-image: var(--gradient-4); }
+.gradient-5 { background-image: var(--gradient-5); }  
+.gradient-6 { background-image: var(--gradient-6); }
+.gradient-7 { background-image: var(--gradient-7); }  
+.gradient-8 { background-image: var(--gradient-8); }
+.gradient-9 { background-image: var(--gradient-9); }  
+.gradient-10 { background-image: var(--gradient-10); }
+.gradient-11 { background-image: var(--gradient-11); }  
+.gradient-12 { background-image: var(--gradient-12); }  
+.gradient-13 { background-image: var(--gradient-13); }  
+.gradient-14 { background-image: var(--gradient-14); }  
+.gradient-15 { background-image: var(--gradient-15); }  
+.gradient-16 { background-image: var(--gradient-16); }  
+.gradient-17 { background-image: var(--gradient-17); }  
+.gradient-18 { background-image: var(--gradient-18); }  
+.gradient-19 { background-image: var(--gradient-19); }  
+.gradient-20 { background-image: var(--gradient-20); }  
+.gradient-21 { background-image: var(--gradient-21); }  
+.gradient-22 { background-image: var(--gradient-22); }  
+.gradient-23 { background-image: var(--gradient-23); }  
+.gradient-24 { background-image: var(--gradient-24); }  
+.gradient-25 { background-image: var(--gradient-25); }  
+.gradient-26 { background-image: var(--gradient-26); }  
+.gradient-27 { background-image: var(--gradient-27); }  
+.gradient-28 { background-image: var(--gradient-28); }  
+.gradient-29 { background-image: var(--gradient-29); }  
+.gradient-30 { background-image: var(--gradient-30); }
+/* TODO */
+
+
+</style>
+
+<Layout>
+  <main>
+  <section class="table-autoscroll stack" tabindex="0" >
+    <h1>Design Tokens</h1>
+    <p>Design tokens are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes. We use them in place of hard-coded values (such as hex values for color or pixel values for spacing) in order to maintain a scalable and consistent visual system for UI development.</p>
+    
+    <h2>Colors</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Color:</b> .[color]-[1-15]</span>
+      <span><b>Background Color:</b> .bg-[color]-[1-15]</span>
+      <span><b>Border Color:</b> .border-[color]-[1-15]</span>
+    </p>  
+  
+    <table class="colors">
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 174px;">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {colors.map((color) => (
+        <tr id={color.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{color.name}</p>
+            {color.description ? (
+              <p class="text-xs">{color.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <div class={`swatch ${color.name.replace('--','bg-')}`}></div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    </table>
+
+    <h2>Spaces</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Space:</b> .space-[3xs|2xs|sm|md|lg|xl|2xl|3xl]</span>
+    </p>  
+  
+    <table>
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 174px;">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {spaces.map((space) => (
+        <tr id={space.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{space.name}</p>
+            {space.description ? (
+              <p class="text-xs">{space.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <div class={`space-swatch ${space.name.replace('--','')}`}></div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    </table>
+
+    <h2>Font Sizes</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Sizes:</b> .text-[xs|sm|md|lg|xl|2xl|3xl|4xl]</span>
+    </p>  
+  
+    <table>
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 174px;">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {fontSize.map((font) => (
+        <tr id={font.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{font.name}</p>
+            {font.description ? (
+              <p class="text-xs">{font.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <div class={`font-swatch ${font.name.replace('--font-size-', 'text-')}`}>
+              aA
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    </table>
+
+    <h2>Line Height</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Line Height:</b> .lineheight-[3xs|2xs|xs|sm|md|lg|xl]</span>
+    </p>  
+  
+    <table>
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 45ch;">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {lineheight.map((lh) => (
+        <tr id={lh.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{lh.name}</p>
+            {lh.description ? (
+              <p class="text-xs">{lh.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <p class={`${lh.name.replace('--', '')}`}>
+              By Jove, my quick study of lexicography won a prize how vexingly quick daft zebras jump!
+            </p>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    </table>
+
+    <h2>Letter Spacing</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Letter Spacing:</b> .letter-spacing-[xs|sm|md|lg|xl|2xl|3xl|4xl]</span>
+    </p>  
+  
+    <table class="spaces">
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 45ch;">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {letterspacing.map((ls) => (
+        <tr id={ls.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{ls.name}</p>
+            {ls.description ? (
+              <p class="text-xs">{ls.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <p class={`${ls.name.replace('--', '')}`}>
+              How vexingly quick daft zebras jump!
+            </p>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    </table>
+
+    <h2>Measure</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Measure:</b> .measure-[sm|md|lg|xl]</span>
+    </p>  
+  
+    <table class="spaces">
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 60%;">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {measure.map((length) => (
+        <tr id={length.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{length.name}</p>
+            {length.description ? (
+              <p class="text-xs">{length.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <p class={`${length.name.replace('--', '')}`}>
+              {length.text}
+            </p>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    </table>
+
+
+    <h2>Border Sizes</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Border Size:</b> .border-size-[sm|md|lg]</span>
+    </p>  
+  
+    <table class="spaces">
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 175px;">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {border.map((bdr) => (
+        <tr id={bdr.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{bdr.name}</p>
+            {bdr.description ? (
+              <p class="text-xs">{bdr.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <div class={`rad-swatch ${bdr.name.replace('--', '')}`}>
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    </table>
+
+
+    <h2>Border Radius</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Radius:</b> .radius-[0|sm|md|lg|xl|2xl|3xl|ellipse]</span>
+    </p>  
+  
+    <table class="spaces">
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 175px">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {radius.map((rad) => (
+        <tr id={rad.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{rad.name}</p>
+            {rad.description ? (
+              <p class="text-xs">{rad.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <div class={`rad-swatch ${rad.name.replace('--', '')}`}>
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    </table>
+
+    <h2>Conditional Border Radius</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Radius:</b> .radius-conditional-[sm|md|lg|xl|2xl|3xl]</span>
+    </p>  
+  
+    <table class="spaces">
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 175px;">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {radiusConditional.map((rad) => (
+        <tr id={rad.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{rad.name}</p>
+            {rad.description ? (
+              <p class="text-xs">{rad.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <div class={`rad-swatch ${rad.name.replace('--', '')}`}>
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    </table>
+
+    <h2>Blob Radius</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Blob Radius:</b> .radius-blob-[1|2|3|4]</span>
+    </p>  
+  
+    <table class="spaces">
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 175px;">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {radiusBlob.map((blob) => (
+        <tr id={blob.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{blob.name}</p>
+            {blob.description ? (
+              <p class="text-xs">{blob.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <div class={`rad-swatch ${blob.name.replace('--', '')}`}>
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    </table>
+
+    <h2>Aspect Ratios</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Aspect Ratio:</b> .ratio-[square|landscape|portrait|widescreen|ultrawide|golden]</span>
+    </p>  
+  
+    <table class="spaces">
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 175px;">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {aspectRatio.map((ratio) => (
+        <tr id={ratio.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{ratio.name}</p>
+            {ratio.description ? (
+              <p class="text-xs">{ratio.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <div class={`ratio-swatch ${ratio.name.replace('--', '')}`}>
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    </table>
+
+    <h2>Z Index</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Z Index:</b> .ratio-[square|landscape|portrait|widescreen|ultrawide|golden]</span>
+    </p>  
+  
+    <table class="spaces">
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 175px;">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {zindex.map((layer) => (
+        <tr id={layer.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{layer.name}</p>
+            {layer.description ? (
+              <p class="text-xs">{layer.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <div class={`${layer.name.replace('--', '')}`}>
+              {`${layer.name.replace('--layer-', 'z-index: ')}`}
+            </div>
+          </td>
+        </tr>
+      ))}
+        <tr>
+          <td class="stack">
+            <p class="">--layer-important</p>
+          </td>
+          <td>
+            <div>
+             z-index: 2147483647
+            </div>
+          </td>
+        </tr>
+    </tbody>
+    </table>
+
+    <h2>Box Shadow</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Blob Radius:</b> .radius-blob-[1|2|3|4]</span>
+    </p>  
+  
+    <table class="spaces">
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 175px;">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {boxShadow.map((shadow) => (
+        <tr id={shadow.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{shadow.name}</p>
+            {shadow.description ? (
+              <p class="text-xs">{shadow.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <div class={`shadow-swatch ${shadow.name.replace('--', '')}`}>
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    </table>
+
+    <h2>Gradients</h2>
+    <p>Utility classes are provided for each token. For example:</p>
+    <p class="flex flex-column">
+      <span><b>Blob Radius:</b> .radius-blob-[1|2|3|4]</span>
+    </p>  
+  
+    <table class="spaces">
+    <thead>
+        <tr>
+            <th>Prop</th>
+            <th style="width: 175px;">Example</th>
+        </tr>
+    </thead>
+    <tbody>
+      {gradients.map((grad) => (
+        <tr id={grad.name.replace('--','')}>
+          <td class="stack">
+            <p class="">{grad.name}</p>
+            {grad.description ? (
+              <p class="text-xs">{grad.description}</p>
+            ) : null}
+          </td>
+          <td>
+            <div class={`rad-swatch ${grad.name.replace('--', '')}`}>
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+    </table>
+</section>
+  
+  
+  <aside>
+    <ul role="list">
+      <li>
+        <details>
+          <summary>Colors</summary>
+          <ul role="list">
+            <li><a href="#brand-0">Brand</a></li>
+            <li><a href="#red-0">Red</a></li>
+            <li><a href="#pink-0">Pink</a></li>
+            <li><a href="#purple-0">Purple</a></li>
+            <li><a href="#violet-0">Violet</a></li>
+            <li><a href="#indigo-0">Indigo</a></li>
+            <li><a href="#blue-0">Blue</a></li>
+            <li><a href="#cyan-0">Cyan</a></li>
+            <li><a href="#teal-0">Teal</a></li>
+            <li><a href="#green-0">Green</a></li>
+            <li><a href="#lime-0">Lime</a></li>
+            <li><a href="#yellow-0">Yellow</a></li>
+            <li><a href="#orange-0">Orange</a></li>
+          </ul>
+        </details>
+        </li>
+      <li><a href="#space-3xs">Spaces</a></li>
+      <li><a href="#font-size-xs">Font Sizes</a></li>
+      <li><a href="#lineheight-3xs">Line Height</a></li>
+      <li><a href="#letterspacing-xs">Letter Spacing</a></li>
+      <li><a href="#measure-sm">Measure</a></li>
+      <li><a href="#border-size-sm">Border Size</a></li>
+      <li><a href="#radius-sm">Border Radius</a></li>
+      <li><a href="#radius-conditional-sm">Border Radius Conditional</a></li>
+      <li><a href="#radius-blob-1">Blob Radius</a></li>
+      <li><a href="#ratio-square">Aspect Ratios</a></li>
+      <li><a href="#layer-1">Z-Index</a></li>
+      <li><a href="#shadow-1">Shadows</a></li>
+      <li><a href="#gradient-1">Gradients</a></li>
+      <li>TODO </li>
+      <li><a href="#">Gradients with Noise</a></li>
+      <li><a href="#">Media Queries</a></li>
+    </ul>
+  </aside>
+</main>
+</Layout>

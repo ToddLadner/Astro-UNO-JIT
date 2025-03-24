@@ -1,0 +1,254 @@
+---
+import Welcome from '../components/Welcome.astro';
+import Layout from '../layouts/Layout.astro';
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+<style>
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	.calendar {
+		width: 80%;
+		margin: 5rem auto;
+
+	}
+	.grids-container {
+	
+		height: 100%;
+		width: 100%;
+		display: grid;
+		
+		> * {
+    	grid-area: 1/1;
+  	}
+		
+	}
+	.grid-outline {
+		background: repeating-linear-gradient(
+		to bottom,
+    black 0px,
+    black 1px,
+    transparent 1px,
+    transparent calc(2 * (100% / 94)),
+    silver calc(2 * (100% / 94)),
+    silver calc(2 * (100% / 94) + 1px),
+    transparent calc(2 * (100% / 94) + 1px),
+    transparent calc(4 * (100% / 94))
+  )
+
+	}
+	.grid-events { z-index: 10;  }
+	
+	.grid-events > * { 
+		background-color: silver; 
+		padding: .5rem;
+		display: grid;
+			> * {
+				grid-area: 1/1;
+				border-radius: .5rem;
+				width: 80%;
+			}
+
+			>*:nth-child(2) { margin-left: auto; z-index: 10; }
+	}
+	
+	.grid-events span {
+		background-color: teal; 
+		display: block;
+		flex: 1;
+		border: 1px solid white;
+	}
+
+	.grid-events,
+	.grid-outline {
+		height: 100%;
+		display: grid;
+		grid-template-rows:
+			[times] auto
+			[time-0100] 1fr
+			[time-0130] 1fr
+			[time-0200] 1fr
+			[time-0230] 1fr
+			[time-0300] 1fr
+			[time-0330] 1fr
+			[time-0400] 1fr
+			[time-0430] 1fr
+			[time-0500] 1fr
+			[time-0530] 1fr
+			[time-0600] 1fr
+			[time-0630] 1fr
+			[time-0700] 1fr
+			[time-0730] 1fr
+			[time-0800] 1fr
+			[time-0830] 1fr
+			[time-0900] 1fr
+			[time-0930] 1fr
+			[time-1000] 1fr
+			[time-1030] 1fr
+			[time-1100] 1fr
+			[time-1130] 1fr
+			[time-1200] 1fr
+			[time-1230] 1fr
+			[time-1300] 1fr
+			[time-1330] 1fr
+			[time-1400] 1fr
+			[time-1430] 1fr
+			[time-1500] 1fr
+			[time-1530] 1fr
+			[time-1600] 1fr
+			[time-1630] 1fr
+			[time-1700] 1fr
+			[time-1730] 1fr
+			[time-1800] 1fr
+			[time-1830] 1fr
+			[time-1900] 1fr
+			[time-1930] 1fr
+			[time-2000] 1fr
+			[time-2030] 1fr
+			[time-2100] 1fr
+			[time-2130] 1fr
+			[time-2200] 1fr
+			[time-2230] 1fr
+			[time-2300] 1fr
+			[time-2330] 1fr
+			[time-2400] 1fr;
+
+		grid-template-columns:
+			[days] 4em
+			[monday-start] 1fr
+			[monday-end tuesday-start] 1fr
+			[tuesday-end wednesday-start] 1fr
+			[wednesday-end thursday-start] 1fr
+			[thursday-end friday-start] 1fr
+			[friday-end saturday-start] 1fr
+			[saturday-end sunday-start] 1fr
+			[sunday-end];
+	}
+	.grid-days {
+		display: grid;
+		
+		grid-template-columns:
+			[days] 4em
+			[monday-start] 1fr
+			[monday-end tuesday-start] 1fr
+			[tuesday-end wednesday-start] 1fr
+			[wednesday-end thursday-start] 1fr
+			[thursday-end friday-start] 1fr
+			[friday-end saturday-start] 1fr
+			[saturday-end sunday-start] 1fr
+			[sunday-end];
+	}
+	/* li {
+		outline: 1px solid #ccc;
+	} */
+
+.time-slot {
+	grid-row: times;
+	position: relative;
+	border-right: 1px solid #ccc;
+	
+	span { position: absolute }
+}
+.day-of-week {
+	grid-row: times;
+	position: relative;
+	grid-row: 1;
+	display: block;
+	background-color: silver;
+	outline: 1px solid white;
+
+
+}
+
+</style>
+<Layout>
+	<div class="calendar">
+		<!-- DAYS OF WEEK -->
+		<ul class="grid-days">
+			<li class="day-of-week" style="grid-column: monday-start;"><span>Monday</span></li>
+			<li class="day-of-week" style="grid-column: tuesday-start;"><span>Tuesday</span></li>
+			<li class="day-of-week" style="grid-column: wednesday-start;"><span>Wednesday</span></li>
+			<li class="day-of-week" style="grid-column: thursday-start;"><span>Thursday</span></li>
+			<li class="day-of-week" style="grid-column: friday-start;"><span>Friday</span></li>
+			<li class="day-of-week" style="grid-column: saturday-start;"><span>Saturday</span></li>
+			<li class="day-of-week" style="grid-column: sunday-start;"><span>Sunday</span></li>
+		</ul>
+		
+		<div class="grids-container">
+			<!-- EVENTS -->
+			<ul class="grid-events">
+				<li style="grid-column: monday-start; grid-row: time-0230 / time-0400;">2:30 - 4:00 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</li>
+				<li style="grid-column: monday-start; grid-row: time-0530 / time-0900;">5:30 - 9:00 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</li>
+				
+				<li style="grid-column: tuesday-start / wednesday-end; grid-row: time-0500 / time-0530;">5:00 - 5:30 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</li>
+				<li style="grid-column: tuesday-start; grid-row: time-0800 / time-0830;">8:00 - 8:30 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</li>
+
+				<li style="grid-column: wednesday-start; grid-row: time-0600 / time-0630;">
+					<span >6:00 - 6:30 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+					<span class="">6:00 - 6:30 Solar dew tincidunt Lorim ipsum solar dew tincidunt</span>
+				</li>
+				
+				<li style="grid-column: thursday-start; grid-row: time-0700 / time-0830;">7:00 - 8:30 Lorim ipsum solar dew tincidunt Lorim ipsum solar dew tincidunt</li>
+			</ul>
+			<!-- CALENDAR TIME -->
+			<ul class="grid-outline">
+				<li class="time-slot" style="grid-row: time-0100;"><span>1:00</span></li>
+				<li class="time-slot" style="grid-row: time-0130;"><span>1:30</span></li>
+				<li class="time-slot" style="grid-row: time-0200;"><span>2:00</span></li>
+				<li class="time-slot" style="grid-row: time-0230;"><span>2:30</span></li>
+				<li class="time-slot" style="grid-row: time-0300;"><span>3:00</span></li>
+				<li class="time-slot" style="grid-row: time-0330;"><span>3:30</span></li>
+				<li class="time-slot" style="grid-row: time-0400;"><span>4:00</span></li>
+				<li class="time-slot" style="grid-row: time-0430;"><span>4:30</span></li>
+				<li class="time-slot" style="grid-row: time-0500;"><span>5:00</span></li>
+				<li class="time-slot" style="grid-row: time-0530;"><span>5:30</span></li>
+
+				<li class="time-slot" style="grid-row: time-0600;"><span>6:00</span></li>
+				<li class="time-slot" style="grid-row: time-0630;"><span>6:30</span></li>
+				<li class="time-slot" style="grid-row: time-0700;"><span>7:00</span></li>
+				<li class="time-slot" style="grid-row: time-0730;"><span>7:30</span></li>
+				<li class="time-slot" style="grid-row: time-0800;"><span>8:00</span></li>
+				<li class="time-slot" style="grid-row: time-0830;"><span>8:30</span></li>
+				<li class="time-slot" style="grid-row: time-0900;"><span>9:00</span></li>
+				<li class="time-slot" style="grid-row: time-0930;"><span>9:30</span></li>
+				<li class="time-slot" style="grid-row: time-1000;"><span>10:00</span></li>
+				<li class="time-slot" style="grid-row: time-1030;"><span>10:30</span></li>
+
+				<li class="time-slot" style="grid-row: time-1100;"><span>11:00</span></li>
+				<li class="time-slot" style="grid-row: time-1130;"><span>11:30</span></li>
+				<li class="time-slot" style="grid-row: time-1200;"><span>12:00</span></li>
+				<li class="time-slot" style="grid-row: time-1230;"><span>12:30</span></li>
+				<li class="time-slot" style="grid-row: time-1300;"><span>1:00</span></li>
+				<li class="time-slot" style="grid-row: time-1330;"><span>1:30</span></li>
+				<li class="time-slot" style="grid-row: time-1400;"><span>2:00</span></li>
+				<li class="time-slot" style="grid-row: time-1430;"><span>2:30</span></li>
+				<li class="time-slot" style="grid-row: time-1500;"><span>3:00</span></li>
+				<li class="time-slot" style="grid-row: time-1530;"><span>3:30</span></li>
+				
+				<li class="time-slot" style="grid-row: time-1600;"><span>4:00</span></li>
+				<li class="time-slot" style="grid-row: time-1630;"><span>4:30</span></li>
+				<li class="time-slot" style="grid-row: time-1700;"><span>5:00</span></li>
+				<li class="time-slot" style="grid-row: time-1730;"><span>5:30</span></li>
+				<li class="time-slot" style="grid-row: time-1800;"><span>6:00</span></li>
+				<li class="time-slot" style="grid-row: time-1830;"><span>6:30</span></li>
+				<li class="time-slot" style="grid-row: time-1900;"><span>7:00</span></li>
+				<li class="time-slot" style="grid-row: time-1930;"><span>7:30</span></li>
+				<li class="time-slot" style="grid-row: time-2000;"><span>8:00</span></li>
+				<li class="time-slot" style="grid-row: time-2030;"><span>8:30</span></li>
+
+				<li class="time-slot" style="grid-row: time-2100;"><span>9:00</span></li>
+				<li class="time-slot" style="grid-row: time-2130;"><span>9:30</span></li>
+				<li class="time-slot" style="grid-row: time-2200;"><span>10:00</span></li>
+				<li class="time-slot" style="grid-row: time-2230;"><span>10:30</span></li>
+				<li class="time-slot" style="grid-row: time-2300;"><span>11:00</span></li>
+				<li class="time-slot" style="grid-row: time-2330;"><span>11:30</span></li>
+				<li class="time-slot" style="grid-row: time-2400;"><span>12:00</span></li>
+			</ul>
+		</div>
+	</div>
+</Layout>

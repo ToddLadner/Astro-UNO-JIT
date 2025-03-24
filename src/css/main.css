@@ -1,0 +1,23 @@
+/* [1] CSS Layers */
+@layer reset, framework, base, layout, components, theme, utilities, demo;
+
+/* Imports */
+@import "reset.css"; 
+@import "hues.css";
+@import "media.css";
+@import "type.css";
+@import "layout.css";
+@import "fonts.css";
+@import "props.css";
+@import "theme.css";
+
+/* 
+[1] CSS Layers
+	reset – Contains a CSS reset to remove browser inconsistencies.
+	framework – Holds third‐party or core framework styles that form the basis of your design system.
+	base – Applies global element styles (typography, colors, etc.) that are independent of layout.
+	layout – Defines the overall page structure (grids, containers, headers/footers).
+	components – Styles for reusable UI components (buttons, cards, forms).
+	theme – Manages the visual theme (color schemes, font choices, design tokens) that can be swapped or adjusted.
+	utilities – Contains helper classes that provide fine-grained control and override other styles when necessary. 
+*/

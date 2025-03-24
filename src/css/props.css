@@ -1,0 +1,10 @@
+:root {
+  /* 01 Font families */
+  --font-sans: 'Roboto Flex', Roboto, system-ui, -apple-system, Segoe UI, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  --font-serif: ui-serif, serif;
+  --font-mono: Dank Mono, Operator Mono, Inconsolata, Fira Mono, ui-monospace, SF Mono, Monaco, Droid Sans Mono, Source Code Pro, monospace;
+
+  /* 02 Adaptive typography */
+  --base-weight: 400;
+  --base-grade: 0;
+}

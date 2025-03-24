@@ -1,0 +1,54 @@
+/* Dynamic padding */
+.p-inline-max { padding-inline: max(var(--space-sm-lg), calc(50vw - var(--content-size, 90em) / 2)) }
+
+/* Stack */
+.stack > * { margin-block: 0; }
+.stack > * + * { margin-block-start: var(--space, 1em); }
+
+/* Split Stack. Don't forget to add flex flex-column */
+.split-stack {
+	> *:nth-child(3) { margin-block-end: auto }
+	&:only-child { block-size: 100% }
+}
+
+/* RAM Grid */
+.grid-ram {
+	display: grid; 
+	grid-template-columns: repeat(var(--grid-columns, auto-fit), minmax(var(--grid-min, 2rem), var(--grid-max, 1fr))) 
+}
+
+/* 12 Span Grid */
+.grid-col { 
+  grid-template-columns: repeat(var(--grid-col, 12), 1fr); 
+  gap: var(--col-gap, 0) var(--row-gap, var(--space-sm-lg));
+}
+
+/* Pile */
+.pile-grid {
+  place-content: var(--place-content, center);
+  > * { grid-area: 1/1; }
+}
+
+/* Scroll Overflow */
+.scroll-x-overflow {
+  display: flex;
+  block-size: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+}
+
+.scroll-x-overflow > * { flex: 0 0 auto; }
+
+.scroll-x-overflow > img {
+  block-size: 100%;
+  flex-basis: auto;
+  width: auto;
+}
+
+.scroll-x-overflow > * + * { margin-inline-start: var(--space-lg); }
+
+.overflow-x-hint { 
+  -webkit-mask-image: linear-gradient(to right, #0000, #000, #000, #0000); 
+  mask-image: linear-gradient(to right, #0000, #000, #000, #0000); 
+}
