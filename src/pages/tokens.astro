@@ -441,11 +441,24 @@ const gradients = [
    // Add additional conditional Radius here...
 ];
 ---
+
 <style>
-  aside{
+aside {
+  border-left: 1px solid var(--surface-3);
+  padding-inline: var(--space-md);
+}
+
+.side-nav {
   position: sticky;
   top:0;
+
+  a { 
+    text-decoration: none;
+    padding: var(--space-3xs);
+    display: block; 
+  }
 }
+
 .table-autoscroll {
   overflow: auto;
   width: 100%;
@@ -476,9 +489,8 @@ th, td {
 main {
   display: grid;
   grid-template-columns: 1fr minmax(150px, 25%);
-  gap: var(--space-2xl);
+  gap: var(--space-lg);
   padding-inline: var(--space-lg);
-  align-items: flex-start;
 }
 .swatch {
   padding: var(--space-sm);
@@ -917,9 +929,6 @@ main {
 .gradient-28 { background-image: var(--gradient-28); }  
 .gradient-29 { background-image: var(--gradient-29); }  
 .gradient-30 { background-image: var(--gradient-30); }
-/* TODO */
-
-
 </style>
 
 <Layout>
@@ -938,10 +947,10 @@ main {
   
     <table class="colors">
     <thead>
-        <tr>
-            <th>Prop</th>
-            <th style="width: 174px;">Example</th>
-        </tr>
+      <tr>
+        <th>Prop</th>
+        <th style="width: 174px;">Example</th>
+      </tr>
     </thead>
     <tbody>
       {colors.map((color) => (
@@ -1382,7 +1391,7 @@ main {
   
   
   <aside>
-    <ul role="list">
+    <ul class="side-nav" role="list">
       <li>
         <details>
           <summary>Colors</summary>
@@ -1419,6 +1428,8 @@ main {
       <li>TODO </li>
       <li><a href="#">Gradients with Noise</a></li>
       <li><a href="#">Media Queries</a></li>
+      <li><a href="#">Transitions</a></li>
+      <li><a href="#">Animations</a></li>
     </ul>
   </aside>
 </main>

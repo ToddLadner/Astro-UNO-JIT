@@ -11,24 +11,17 @@ Faster taps
 ─────────────────────────────── */
 @layer reset {
 
-  /* ↓ View Transition | CSS */
-  @view-transition { navigation: auto; } 
-  
   /* ↓ Opt-in the whole page to interpolate sizes to/from keywords */
   :root { interpolate-size: allow-keywords }
 
+  /* ↓ View Transition | CSS */
+  @view-transition { navigation: auto; } 
+  
   /* ↓ Box sizing */
   *, *::before, *::after { box-sizing: border-box }
 
   body, #app { isolation: isolate }
   
-  :not(fieldset,progress,meter) {
-    border-width: 0;
-    border-style: solid;
-    background-origin: border-box;
-    background-repeat: no-repeat;
-  }
-
   /* ↓ HTML */
   html {
     height: 100%;
@@ -159,3 +152,10 @@ textarea:not([rows]) { min-height: 10em }
 
 /* Allow grid & flex children to shrink */
 :where(.flex, .flex-inline, .grid, .grid-inline) > * { min-width: 0 }
+
+/* :not(fieldset,progress,meter) {
+  border-width: 0;
+  border-style: solid;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+} */
