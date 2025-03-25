@@ -3,43 +3,43 @@ import Layout from '../layouts/Layout.astro';
 import Welcome from '@components/Welcome.astro';
 ---
 <style>
-.pallette {
-	/* Stack space */
-	--space: var(--space-xs);
-	display: flex;
-	gap: var(--space-xs);
-	
-	> * { 
+	.pallette {
+		/* Stack space */
+		--space: var(--space-xs);
 		display: flex;
-		flex-direction: column;
 		gap: var(--space-xs);
+		
+		> * { 
+			display: flex;
+			flex-direction: column;
+			gap: var(--space-xs);
+		}
+
+		.swatch {
+			padding: var(--space-sm); 
+			width: var(--space-3xl);
+			height: auto;
+			border-radius: var(--radius-md);
+			box-shadow: var(--shadow-3);
+			border: 1px solid var(--surface-2);
+		}
 	}
 
-	.swatch {
-		padding: var(--space-sm); 
-		width: var(--space-3xl);
-		height: auto;
-		border-radius: var(--radius-md);
-		box-shadow: var(--shadow-3);
-		border: 1px solid var(--surface-2);
+	.theme > {
+		*:nth-child(1) .swatch { background-color: var(--brand) } 
+		*:nth-child(2) .swatch { background-color: var(--surface-2) }
+		*:nth-child(3) .swatch { background-color: var(--surface-3) } 
+		*:nth-child(4) .swatch { background-color: var(--surface-4) }
+		*:nth-child(5) .swatch { background-color: var(--surface-3) } 
+		*:nth-child(6) .swatch { background-color: var(--surface-4) }
 	}
-}
 
-.theme > {
-	*:nth-child(1) .swatch { background-color: var(--brand) } 
-	*:nth-child(2) .swatch { background-color: var(--surface-2) }
-	*:nth-child(3) .swatch { background-color: var(--surface-3) } 
-	*:nth-child(4) .swatch { background-color: var(--surface-4) }
-	*:nth-child(5) .swatch { background-color: var(--surface-3) } 
-	*:nth-child(6) .swatch { background-color: var(--surface-4) }
-}
-
-.grayscale > {
-	*:nth-child(1) .swatch { background-color: var(--surface-1) } 
-	*:nth-child(2) .swatch { background-color: var(--surface-2) }
-	*:nth-child(3) .swatch { background-color: var(--surface-3) } 
-	*:nth-child(4) .swatch { background-color: var(--surface-4) }
-}
+	.grayscale > {
+		*:nth-child(1) .swatch { background-color: var(--surface-1) } 
+		*:nth-child(2) .swatch { background-color: var(--surface-2) }
+		*:nth-child(3) .swatch { background-color: var(--surface-3) } 
+		*:nth-child(4) .swatch { background-color: var(--surface-4) }
+	}
 
 .text > {
 	*:nth-child(1) .swatch { background-color: var(--text-1) } 
